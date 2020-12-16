@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\alerc\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\alerc\.Rider2019.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\alerc\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\alerc\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_.19.00" t="ExcludeRecursive" />
+    <e p="C:\Work\CA.Platform\CA.Platform" t="IncludeRecursive">
+      <e p="Application" t="Include">
+        <e p="Audit" t="Include">
+          <e p="Queries" t="Include">
+            <e p="AuditRecordDto.cs" t="Include" />
+            <e p="GetItemAuditQuery.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Behaviors" t="Include">
+          <e p="PerfomanceLoggerBehavior.cs" t="Include" />
+          <e p="RequestLoggerBehavior.cs" t="Include" />
+          <e p="RequestValidationBehavior.cs" t="Include" />
+          <e p="RoleValidationBehavior.cs" t="Include" />
+        </e>
+        <e p="Common" t="Include">
+          <e p="ApplicationProvider.cs" t="Include" />
+          <e p="GenericMethodInfoProvider.cs" t="Include" />
+          <e p="MappingProfile.cs" t="Include" />
+        </e>
+        <e p="Contracts" t="Include">
+          <e p="BaseDto.cs" t="Include" />
+          <e p="BaseObjectDto.cs" t="Include" />
+          <e p="LookupDto.cs" t="Include" />
+          <e p="OkDto.cs" t="Include" />
+          <e p="PermissionDto.cs" t="Include" />
+          <e p="ResultDto.cs" t="Include" />
+          <e p="TokenDto.cs" t="Include" />
+          <e p="UserDto.cs" t="Include" />
+        </e>
+        <e p="Default" t="Include">
+          <e p="Commands" t="Include">
+            <e p="CreateDefaultItemCommand.cs" t="Include" />
+            <e p="DeleteDefaultItemCommand.cs" t="Include" />
+            <e p="UpdateDefaultItemCommand.cs" t="Include" />
+            <e p="UpdateFieldDto.cs" t="Include" />
+          </e>
+          <e p="Queries" t="Include">
+            <e p="DefaultItemDto.cs" t="Include" />
+            <e p="GetDefaultItemListQuery.cs" t="Include" />
+            <e p="GetDefaultItemQuery.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Entities" t="Include">
+          <e p="Queries" t="Include">
+            <e p="EntityFieldDto.cs" t="Include" />
+            <e p="EntityTypeDto.cs" t="Include" />
+            <e p="GetEntitiesListQuery.cs" t="Include" />
+            <e p="GetEntityFieldsQuery.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IDbContext.cs" t="Include" />
+          <e p="IDbSet.cs" t="Include" />
+          <e p="IEntityService.cs" t="Include" />
+          <e p="IListQuery.cs" t="Include" />
+          <e p="IMapFor.cs" t="Include" />
+          <e p="IStringHashService.cs" t="Include" />
+          <e p="ITokenService.cs" t="Include" />
+          <e p="IUserContext.cs" t="Include" />
+        </e>
+        <e p="Users" t="Include">
+          <e p="Commands" t="Include">
+            <e p="AuthenticateCommand.cs" t="Include" />
+            <e p="RegisterUserCommand.cs" t="Include" />
+          </e>
+          <e p="Query" t="Include">
+            <e p="GetPermssionsQuery.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="CA.Platform.csproj" t="IncludeRecursive" />
+      <e p="Domain" t="Include">
+        <e p="Attributes" t="Include">
+          <e p="AccessAttribute.cs" t="Include" />
+        </e>
+        <e p="Entities" t="Include">
+          <e p="AuditRecord.cs" t="Include" />
+          <e p="BaseObject.cs" t="Include" />
+          <e p="EntityField.cs" t="Include" />
+          <e p="EntityOperation.cs" t="Include" />
+          <e p="EntityType.cs" t="Include" />
+          <e p="Identity" t="Include">
+            <e p="Application.cs" t="Include" />
+            <e p="Permission.cs" t="Include" />
+            <e p="Role.cs" t="Include" />
+            <e p="RolePermission.cs" t="Include" />
+            <e p="User.cs" t="Include" />
+            <e p="UserRole.cs" t="Include" />
+          </e>
+          <e p="Interfaces" t="Include">
+            <e p="IBaseObject.cs" t="Include" />
+            <e p="IContent.cs" t="Include" />
+            <e p="IEntity.cs" t="Include" />
+            <e p="IKey.cs" t="Include" />
+            <e p="IOrder.cs" t="Include" />
+            <e p="ITitle.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Exceptions" t="Include">
+          <e p="NotAthenticatedException.cs" t="Include" />
+          <e p="NotFoundException.cs" t="Include" />
+          <e p="NotRegistredClassException.cs" t="Include" />
+          <e p="ValidationException.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Infrastructure" t="Include">
+        <e p="DataBase" t="Include">
+          <e p="BaseDbContext.cs" t="Include" />
+          <e p="DataContextWrapper.cs" t="Include" />
+          <e p="DbSetWrapper.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IAuditService.cs" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="DbAuditService.cs" t="Include" />
+          <e p="DbEntityService.cs" t="Include" />
+          <e p="JwtTokenService.cs" t="Include" />
+          <e p="StringConvertService.cs" t="Include" />
+          <e p="StringHashService.cs" t="Include" />
+        </e>
+        <e p="Settings" t="Include">
+          <e p="AppSettings.cs" t="Include" />
+        </e>
+        <e p="UserContext" t="Include">
+          <e p="WebUserContext.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.0" t="Include">
+            <e p="CA.Platform.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="PlatformExtensions.cs" t="Include" />
+      <e p="Tests" t="Include">
+        <e p="BaseEntityTest.cs" t="Include" />
+        <e p="BaseTest.cs" t="Include" />
+        <e p="Generator.cs" t="Include" />
+      </e>
+      <e p="WebApp" t="Include">
+        <e p="BaseApiController.cs" t="Include" />
+        <e p="BaseAuditController.cs" t="Include" />
+        <e p="BaseDefaultController.cs" t="Include" />
+        <e p="BaseEntityController.cs" t="Include" />
+        <e p="BaseUserController.cs" t="Include" />
+        <e p="CustomExceptionHandlerMiddleware.cs" t="Include" />
+      </e>
+    </e>
+  </component>
+</project>

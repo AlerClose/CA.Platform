@@ -1,0 +1,16 @@
+C:\Work\CA.Core\CA.Platform\bin\Debug\netcoreapp3.0\CA.Platform.deps.json
+C:\Work\CA.Core\CA.Platform\bin\Debug\netcoreapp3.0\CA.Platform.dll
+C:\Work\CA.Core\CA.Platform\bin\Debug\netcoreapp3.0\CA.Platform.pdb
+C:\Work\CA.Core\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.csprojAssemblyReference.cache
+C:\Work\CA.Core\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.AssemblyInfoInputs.cache
+C:\Work\CA.Core\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.AssemblyInfo.cs
+C:\Work\CA.Core\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.dll
+C:\Work\CA.Core\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.pdb
+C:\Work\CA.Platform\CA.Platform\bin\Debug\netcoreapp3.0\CA.Platform.deps.json
+C:\Work\CA.Platform\CA.Platform\bin\Debug\netcoreapp3.0\CA.Platform.dll
+C:\Work\CA.Platform\CA.Platform\bin\Debug\netcoreapp3.0\CA.Platform.pdb
+C:\Work\CA.Platform\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.csprojAssemblyReference.cache
+C:\Work\CA.Platform\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.AssemblyInfoInputs.cache
+C:\Work\CA.Platform\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.AssemblyInfo.cs
+C:\Work\CA.Platform\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.dll
+C:\Work\CA.Platform\CA.Platform\obj\Debug\netcoreapp3.0\CA.Platform.pdb
