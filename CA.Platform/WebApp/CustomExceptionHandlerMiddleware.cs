@@ -46,6 +46,10 @@ namespace CA.WebPlatform
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
+            
+            context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            context.Response.Headers.Add("Access-Control-Allow-Headers", "*");
+            context.Response.Headers.Add("Access-Control-Allow-Methods", "*");
 
             if (string.IsNullOrEmpty(result))
             {

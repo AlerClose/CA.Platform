@@ -26,6 +26,8 @@ namespace CA.Platform
 {
     public static class PlatformExtensions
     {
+        private static readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        
         public static void RegisterApplication(this IServiceCollection services, Assembly currentAssembly)
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -72,10 +74,6 @@ namespace CA.Platform
             
             services.AddInfrastructure<TContext>();
             
-            services.AddMvc(options => { options.EnableEndpointRouting = false; });
-            
-            services.AddAuthentication(configuration);
-            
             services.AddCors(builder =>
             {
                 builder.AddDefaultPolicy(policyBuilder =>
@@ -87,6 +85,10 @@ namespace CA.Platform
                 });
             });
             
+            services.AddMvc(options => { options.EnableEndpointRouting = false; });
+            
+            services.AddAuthentication(configuration);
+
             services.AddSwaggerGen(a =>
             {
                 a.SwaggerDoc("v1", new OpenApiInfo()
@@ -155,16 +157,11 @@ namespace CA.Platform
         {
             app.UseRouting(); // используем систему маршрутизации
             
+            app.UseCors();
+            
             app.UseAuthentication();
 
             app.UseMvc();
-            
-            app.UseCors(options =>
-            {
-                options.AllowAnyHeader();
-                options.AllowAnyOrigin();
-                options.AllowAnyMethod();
-            });
 
             app.UseMiddleware<CustomExceptionHandlerMiddleware>();
             app.UseSwagger();
