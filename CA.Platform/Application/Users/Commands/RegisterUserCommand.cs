@@ -49,6 +49,7 @@ namespace CA.Platform.Application.Users.Commands
                     Password = _hashService.GetHash(request.Password),
                     FirstName = request.FirstName,
                     LastName = request.LastName,
+                    IsActive = true
                 });
 
                 await _dbContext.SaveChangesAsync(cancellationToken);
