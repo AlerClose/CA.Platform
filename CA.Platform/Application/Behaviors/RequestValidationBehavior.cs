@@ -32,7 +32,7 @@ namespace CA.Platform.Application.Behaviors
 
             if (failures.Count != 0)
             {
-                throw new ValidationException(failures.Select(a=>a.ErrorCode).Join(";"));
+                throw new ValidationException(string.Join(";",failures.Select( a=>a.ErrorCode)));
             }
 
             return next();
