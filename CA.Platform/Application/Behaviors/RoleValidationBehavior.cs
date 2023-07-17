@@ -18,8 +18,8 @@ namespace CA.Platform.Application.Behaviors
         {
             _userContext = userContext;
         }
-        
-        public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+
+        public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
             var attributes = request.GetType().GetCustomAttributes(typeof(AccessAttribute), false).Cast<AccessAttribute>().ToArray();
 
