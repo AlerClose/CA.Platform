@@ -16,7 +16,7 @@ namespace CA.Platform.Infrastructure.Services
             _dbContext = dbContext;
         }
 
-        public void WriteRecordsAsync(IEnumerable<AuditRecord> records, CancellationToken cancellationToken)
+        public void AddRecordsAsync(IEnumerable<AuditRecord> records, CancellationToken cancellationToken)
         {
             _dbContext.AuditRecords.AddRange(records);
         }

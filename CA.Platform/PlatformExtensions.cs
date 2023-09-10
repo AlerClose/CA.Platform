@@ -53,6 +53,10 @@ namespace CA.Platform
         {
             services.AddScoped<IUserContext, WebUserContext>();
 
+            services.AddScoped<IEntitySaveHandler, DefaultPropsHandler>();
+
+            services.AddScoped<IEntitySaveHandler, AuditHandler>();
+
             services.AddScoped<IDbContext, DataContextWrapper<TContext>>();
 
             services.AddScoped<IAuditService, DbAuditService<TContext>>();

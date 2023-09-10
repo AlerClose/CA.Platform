@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CA.WebPlatform
+namespace CA.Platform.WebApp
 {
     [Authorize]
     [ApiController]

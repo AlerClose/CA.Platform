@@ -14,6 +14,11 @@ namespace CA.Platform.Entities
         public Guid CreatedBy { get; set; }
         
         public Guid Id { get; set; }
+
+        public void Delete()
+        {
+            IsDeleted = true;
+        }
         
         public bool IsDeleted { get; set; }
 

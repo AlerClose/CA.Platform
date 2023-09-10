@@ -12,9 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace CA.Platform.WebApp
 {
     [Route("api/default")]
-    public abstract class BaseDefaultController: BaseApiController
+    internal class DefaultController: BaseApiController
     {
-        protected BaseDefaultController(IMediator mediator) : base(mediator)
+        public DefaultController(IMediator mediator) : base(mediator)
         {
         }
         

@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace CA.Platform.WebApp
 {
     [Route("api/entities")]
-    public abstract class BaseEntityController : BaseApiController
+    internal class EntityController : BaseApiController
     {
-        protected BaseEntityController(IMediator mediator) : base(mediator)
+        public EntityController(IMediator mediator) : base(mediator)
         {
         }
         

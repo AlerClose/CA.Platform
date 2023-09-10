@@ -62,6 +62,10 @@ namespace CA.Platform.Tests
         protected virtual void AddDataBase(ServiceCollection services)
         {
             services.AddDbContext<TContext>(builder => builder.UseInMemoryDatabase("testDataBase"));
+            
+            services.AddScoped<IEntitySaveHandler, DefaultPropsHandler>();
+
+            services.AddScoped<IEntitySaveHandler, AuditHandler>();
         }
 
         protected virtual void AddAuditService(ServiceCollection services)
@@ -85,6 +89,7 @@ namespace CA.Platform.Tests
             {
                 var mock = new Mock<IUserContext>();
                 mock.Setup(serviceProvider => serviceProvider.GetCurrentUser()).Returns(_currentUser);
+                mock.Setup(serviceProvider => serviceProvider.GetCurrentUserId()).Returns(_currentUser.Id);
                 return mock.Object;
             });
         }

@@ -7,7 +7,7 @@ namespace CA.Platform.Infrastructure.Interfaces
 {
     public interface IAuditService
     {
-        void WriteRecordsAsync(IEnumerable<AuditRecord> records, CancellationToken cancellationToken);
+        void AddRecordsAsync(IEnumerable<AuditRecord> records, CancellationToken cancellationToken);
 
         bool NeedToWriteAudit(Type entityType);
 
