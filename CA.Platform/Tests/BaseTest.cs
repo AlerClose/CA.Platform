@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using CA.Platform.Application.Contracts;
 using CA.Platform.Application.Interfaces;
 using CA.Platform.Infrastructure.DataBase;
@@ -16,6 +18,8 @@ namespace CA.Platform.Tests
     {
         private readonly UserDto _currentUser = Generator.Get<UserDto>();
 
+        private readonly List<Assembly> _assembliesToRegister = new();
+
         protected ServiceProvider ServiceProvider { get; private set; }
 
         protected IMediator Mediator => ServiceProvider.GetService<IMediator>();
@@ -27,6 +31,11 @@ namespace CA.Platform.Tests
         protected IStringHashService StringHashService => ServiceProvider.GetService<IStringHashService>();
 
         protected IAuditService AuditService => ServiceProvider.GetService<IAuditService>();
+
+        protected void AddAssembly(Assembly assembly)
+        {
+            _assembliesToRegister.Add(assembly);
+        }
             
         [SetUp]
         public virtual void Setup()
@@ -36,7 +45,10 @@ namespace CA.Platform.Tests
             SetupInternal(services);
 
             services.AddApplication("test");
+            
             services.AddLogging();
+            
+            services.RegisterApplication(_assembliesToRegister.ToArray());
 
             AddDataBase(services);
             

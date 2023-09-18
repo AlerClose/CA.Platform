@@ -8,4 +8,6 @@ public class Topic : BaseObject, ITitle
     public string Title { get; set; }
     
     public string? Description { get; set; }
+
+    public string TestData() => Title;
 }

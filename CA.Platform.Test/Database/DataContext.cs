@@ -7,13 +7,11 @@ public class DataContext : BaseDbContext
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
-        
     }
     
     public DataContext()
     {
-        
     }
-    
+
     public DbSet<Topic> Topics { get; set; }
 }

@@ -40,9 +40,7 @@ namespace CA.Platform.Infrastructure.DataBase
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-           
-
+            
             modelBuilder.Entity<UserRole>()
                 .HasKey(t => new {t.RoleId, t.UserId});
 
@@ -67,9 +65,14 @@ namespace CA.Platform.Infrastructure.DataBase
             modelBuilder.Entity<Permission>()
                 .HasMany(a => a.Roles)
                 .WithOne(a => a.Permission)
-                .HasForeignKey(a => a.PermissionId);;
+                .HasForeignKey(a => a.PermissionId);
 
             SetDefaultDbSetProperties(modelBuilder);
+
+            foreach (var modelExtender in PlatformExtensions.ModelExtenders)
+            {
+                modelExtender.ExtendEntities(modelBuilder);   
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using AutoMapper;
@@ -26,17 +28,21 @@ namespace CA.Platform
 {
     public static class PlatformExtensions
     {
+        internal static readonly List<IDbEntityModelExtender> ModelExtenders = new();
+        
         private static readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         
-        public static void RegisterApplication(this IServiceCollection services, Assembly currentAssembly)
+        public static void RegisterApplication(this IServiceCollection services, params Assembly [] assemblies)
         {
-            var assembly = Assembly.GetExecutingAssembly();
+            var assemblyList = assemblies.ToList();
+            assemblyList.Add(Assembly.GetExecutingAssembly());
             
-            services.AddMediatR(currentAssembly, assembly);
+            services.AddMediatR(cfg=>
+            {
+                cfg.RegisterServicesFromAssemblies(assemblyList.ToArray());
+            });
 
-            MappingProfile.Assemblies = new[] {assembly, currentAssembly};
-            
-            services.AddAutoMapper(currentAssembly, assembly);
+            services.AddAutoMapper(assemblyList);
         }
         
         internal static void AddApplication(this IServiceCollection services, string applicationKey)
@@ -70,6 +76,15 @@ namespace CA.Platform
             services.AddScoped<StringConvertService<TContext>>();
             
             services.AddHttpContextAccessor();
+        }
+
+        public static void AddDbModelExtender<T>(T modelExtender) where T : IDbEntityModelExtender
+        {
+            if (ModelExtenders.Contains(modelExtender) || modelExtender == null) return;
+            
+            if (ModelExtenders.Any(a => a.GetType() == modelExtender.GetType())) return;
+
+            ModelExtenders.Add(modelExtender);
         }
         
         public static void AddPlatform<TContext>(this IServiceCollection services, string applicationKey, IConfiguration configuration) where TContext: BaseDbContext
