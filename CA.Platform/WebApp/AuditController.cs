@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CA.Platform.WebApp
 {
     [Route("api/audit")]
-    internal class AuditController : BaseApiController
+    public class AuditController : BaseApiController
     {
         public AuditController(IMediator mediator) : base(mediator)
         {

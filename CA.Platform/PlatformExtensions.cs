@@ -12,6 +12,7 @@ using CA.Platform.Infrastructure.Interfaces;
 using CA.Platform.Infrastructure.Services;
 using CA.Platform.Infrastructure.Settings;
 using CA.Platform.Infrastructure.UserContext;
+using CA.Platform.WebApp;
 using CA.WebPlatform;
 using MediatR;
 using MediatR.Pipeline;
@@ -104,13 +105,13 @@ namespace CA.Platform
                 });
             });
             
-            services.AddMvc(options => { options.EnableEndpointRouting = false; });
+            services.AddMvc(options => { options.EnableEndpointRouting = false; }).AddApplicationPart(Assembly.GetExecutingAssembly());
             
             services.AddAuthentication(configuration);
 
             services.AddSwaggerGen(a =>
             {
-                a.SwaggerDoc("v1", new OpenApiInfo()
+                a.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = Assembly.GetExecutingAssembly().GetName().Name + " API",
                     Version = "v1"

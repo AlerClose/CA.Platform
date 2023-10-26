@@ -11,15 +11,15 @@ namespace CA.Platform.Application.Interfaces
 {
     public interface IEntityService
     {
-        EntityFieldDto GetEntityFieldDto(Type entityType, string fieldName);
+        EntityField GetEntityFieldDto(Type entityType, string fieldName);
 
-        EntityFieldDto GetEntityFieldById(int id);
+        EntityField GetEntityFieldById(int id);
 
         PropertyInfo GetEntityFieldPropertyById(int id);
 
         Type GetEntityTypeById(int id);
 
-        EntityTypeDto GetEntityTypeDto(int id);
+        EntityType GetEntityTypeDto(int id);
         
         int GetEntityTypeId(Type entityType);
         

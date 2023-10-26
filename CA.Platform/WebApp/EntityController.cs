@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CA.Platform.WebApp
 {
     [Route("api/entities")]
-    internal class EntityController : BaseApiController
+    public class EntityController : BaseApiController
     {
         public EntityController(IMediator mediator) : base(mediator)
         {

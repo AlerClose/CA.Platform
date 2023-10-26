@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CA.Platform.Application.Entities.Queries;
+using CA.Platform.Entities;
 
 namespace CA.Platform.Application.Default.Queries
 {
@@ -14,7 +15,7 @@ namespace CA.Platform.Application.Default.Queries
         
         public class FieldDto
         {
-            public EntityFieldDto EntityField { get; set; } 
+            public EntityField EntityField { get; set; } 
             
             public string Value { get; set; }
         }

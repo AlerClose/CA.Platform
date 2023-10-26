@@ -16,32 +16,28 @@ namespace CA.Platform.Infrastructure.Services
 {
     class DbEntityService<TContext> : IEntityService where TContext: BaseDbContext
     {
-        private static readonly Dictionary<Type, Dictionary<string, EntityFieldDto>> EntityFieldsCollection =
-            new Dictionary<Type, Dictionary<string, EntityFieldDto>>();
+        private static readonly Dictionary<Type, Dictionary<string, EntityField>> EntityFieldsCollection = new();
         
-        private static readonly Dictionary<int, Type> EntityTypesCollection =
-            new Dictionary<int, Type>();
+        private static readonly Dictionary<int, Type> EntityTypesCollection = new();
         
-        private static readonly Dictionary<Type, int> EntityTypeIdCollection =
-            new Dictionary<Type, int>();
+        private static readonly Dictionary<Type, int> EntityTypeIdCollection = new();
         
-        private static readonly Dictionary<int, PropertyInfo> EntityPropertiesAndFields = new Dictionary<int, PropertyInfo>();
-        private static readonly Dictionary<int, EntityFieldDto> EntityFieldDtoCollection = new Dictionary<int, EntityFieldDto>();
+        private static readonly Dictionary<int, PropertyInfo> EntityPropertiesAndFields = new();
         
-        private static readonly Dictionary<int, EntityTypeDto> EntityTypeDtoCollection = new Dictionary<int, EntityTypeDto>();
+        private static readonly Dictionary<int, EntityField> EntityFieldDtoCollection = new();
+        
+        private static readonly Dictionary<int, EntityType> EntityTypeDtoCollection = new();
 
         private static readonly PropertyInfo[] SystemProperties = typeof(BaseObject).GetProperties();
         
         private readonly StringConvertService<TContext> _convertService;
-        private readonly IMapper _mapper;
 
         private readonly TContext _dataContext;
 
-        public DbEntityService(StringConvertService<TContext> convertService, IMapper mapper, TContext dataContext)
+        public DbEntityService(StringConvertService<TContext> convertService, TContext dataContext)
         {
            
             _convertService = convertService;
-            _mapper = mapper;
             _dataContext = dataContext;
 
             if (EntityFieldsCollection.Count == _dataContext.GetDbSetProperties().Count()) 
@@ -67,23 +63,23 @@ namespace CA.Platform.Infrastructure.Services
                     EntityTypeIdCollection.Add(type, dbEntity.Id);
                 
                 if (!EntityFieldsCollection.ContainsKey(type))
-                    EntityFieldsCollection.Add(type, new Dictionary<string, EntityFieldDto>());
+                    EntityFieldsCollection.Add(type, new Dictionary<string, EntityField>());
                 
                 if (!EntityTypeDtoCollection.ContainsKey(dbEntity.Id))
-                    EntityTypeDtoCollection.Add(dbEntity.Id, _mapper.Map<EntityTypeDto>(dbEntity));
+                    EntityTypeDtoCollection.Add(dbEntity.Id, dbEntity);
 
                 foreach (var field in dbEntity.Fields)
                 {
                     var property = type.GetProperty(field.Name);
                     
                     if (!EntityFieldsCollection[type].ContainsKey(field.Name))
-                        EntityFieldsCollection[type].Add(field.Name, _mapper.Map<EntityFieldDto>(field));
+                        EntityFieldsCollection[type].Add(field.Name, field);
                     
                     if (!EntityPropertiesAndFields.ContainsKey(field.Id))
                         EntityPropertiesAndFields.Add(field.Id, property);
                     
                     if (!EntityFieldDtoCollection.ContainsKey(field.Id))
-                        EntityFieldDtoCollection.Add(field.Id, _mapper.Map<EntityFieldDto>(field));
+                        EntityFieldDtoCollection.Add(field.Id, field);
                 }
             }
         }
@@ -162,7 +158,7 @@ namespace CA.Platform.Infrastructure.Services
             return dbEntity;
         }
 
-        public EntityFieldDto GetEntityFieldDto(Type entityType, string fieldName)
+        public EntityField GetEntityFieldDto(Type entityType, string fieldName)
         {
             if (!EntityFieldsCollection.ContainsKey(entityType))
                 return null;
@@ -179,7 +175,7 @@ namespace CA.Platform.Infrastructure.Services
             UpdateEntities(entities);
         }
         
-        public EntityFieldDto GetEntityFieldById(int id)
+        public EntityField GetEntityFieldById(int id)
         {
             if (!EntityFieldDtoCollection.ContainsKey(id))
                 throw new NotSupportedException($"Not found field with id {id}");
@@ -203,7 +199,7 @@ namespace CA.Platform.Infrastructure.Services
             return EntityTypesCollection[id];
         }
 
-        public EntityTypeDto GetEntityTypeDto(int id)
+        public EntityType GetEntityTypeDto(int id)
         {
             if (!EntityFieldDtoCollection.ContainsKey(id))
                 throw new NotSupportedException($"Not found entity with id {id}");

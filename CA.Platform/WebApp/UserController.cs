@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CA.Platform.WebApp
 {
     [Route("api/user")]
-    internal class UserController : BaseApiController
+    public class UserController : BaseApiController
     {
         public UserController(IMediator mediator) : base(mediator)
         {
