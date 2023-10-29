@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -77,6 +78,8 @@ namespace CA.Platform
             services.AddScoped<StringConvertService<TContext>>();
             
             services.AddHttpContextAccessor();
+            
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         public static void AddDbModelExtender<T>(T modelExtender) where T : IDbEntityModelExtender
