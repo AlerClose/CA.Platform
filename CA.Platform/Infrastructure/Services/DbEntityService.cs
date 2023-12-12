@@ -143,7 +143,7 @@ namespace CA.Platform.Infrastructure.Services
 
         private EntityType ActualizeEntityInfo(Type entity, EntityType[] dbEntities)
         {
-            var dbEntity = dbEntities.SingleOrDefault(t => t.Name == entity.FullName);
+            var dbEntity = dbEntities.FirstOrDefault(t => t.Name == entity.FullName);
             if (dbEntity == null)
             {
                 dbEntity = new EntityType()

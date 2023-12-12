@@ -36,6 +36,9 @@ namespace CA.WebPlatform
 
             switch (exception)
             {
+                case NotAthenticatedException:
+                    code = HttpStatusCode.Unauthorized;
+                    break;
                 case ValidationException validationException:
                     code = HttpStatusCode.BadRequest;                    
                     break;
