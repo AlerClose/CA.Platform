@@ -176,6 +176,8 @@ namespace CA.Platform
 
         public static void UsePlatform(this IApplicationBuilder app)
         {
+            app.UseMiddleware<CustomExceptionHandlerMiddleware>();
+            
             app.UseRouting(); // используем систему маршрутизации
             
             app.UseCors();
@@ -183,8 +185,7 @@ namespace CA.Platform
             app.UseAuthentication();
 
             app.UseMvc();
-
-            app.UseMiddleware<CustomExceptionHandlerMiddleware>();
+            
             app.UseSwagger();
             app.UseSwaggerUI(a =>
             {
